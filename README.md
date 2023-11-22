@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Toy Robot Simulator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The goal of this project is to demonstrate a Proof of Concept of a simple user controlled entity/character moving around a bounded 2D space on screen.
+
+https://overreacted.io/npm-audit-broken-by-design/
 
 ## Available Scripts
 
