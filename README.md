@@ -18,6 +18,7 @@ For the future, there is a growing alternative called "vite" that I have also us
 - react-hook-form (Mainly for form validation. I have also used Formik in the past).
 - react-testing-library for rendering the asserting react components for the purpose unit testing.
 - husky ( to setup pre-commit hook)
+- prop-types ( to add runtime validation of input props of the components ).
 
 ## Starting the app locally
 
