@@ -1,7 +1,7 @@
 {
   "name": "toyrobot",
   "version": "0.1.0",
-  "homepage": "https://michaelkoswara.github.io/toyrobot/",
+  "homepage": "https://michaelkoswara.github.io/toyrobot",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "latest",
+    "gh-pages": "^6.1.0",
     "husky": "^4.3.8"
   },
   "scripts": {
@@ -24,7 +25,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint './src/**/*.{js,jsx}'",
     "lint:fix": "eslint './src/**/*.{js,jsx}' --fix",
-    "setup": "npm i && npm start"
+    "setup": "npm i && npm start",
+    "predeploy": "rm -rf build && npm run build",
+    "deploy": "gh-pages -d build"
   },
   "husky": {
     "hooks": {
