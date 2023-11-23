@@ -2,71 +2,31 @@
 
 The goal of this project is to demonstrate a Proof of Concept of a simple user controlled entity/character moving around a bounded 2D space on screen.
 
-https://overreacted.io/npm-audit-broken-by-design/
 
-## Available Scripts
+## Important note
 
-In the project directory, you can run:
+This initial template for this project is "create-react-app".
+Although this is famous and has been around for awhile, there is a design flaw of this development server that leads
+to encountering an NPM Audit warning of 8 or so packages during installation.
+This is widely known and for the purpose of Proof of Concept it should be fine. 
+More info here: https://overreacted.io/npm-audit-broken-by-design/
 
-### `npm start`
+For the future, there is a growing alternative called "vite" that I have also used in the past.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Starting the app locally
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Clone the repo, or if you have the zip, then unzip it.
+- `cd` into the directory of the app and run `npm run setup`. This will install initial dependencies and start the local server on localhost:3000
 
-### `npm test`
+### Unit testing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- run `npm run test` from the root directory of the app
 
-### `npm run build`
+### Building an optimized package for deployment
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- run `npm run build` from the root directory
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Pre-commit hook
+- There is a basic pre-commit hook that is automatically run when you do `git commit`.
+- The hook runs `npm lint:fix`. It will fix minor code style issue and report on any other errors to fix before commiting.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
