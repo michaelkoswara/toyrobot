@@ -14,10 +14,11 @@ export const Home = () => {
     const playingBoard = (new Array(5)).fill(new Array(5).fill(0));
     const [arrowKeyPressed, invalidKeyPressed] = useKeyPress(['ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown']);
 
-    const generateRandomNumber = (min = 0, max = 4, exclusion = 0) => {
-        let randomNumber = Math.floor(Math.random() * (max - min)) + min;
+    // Generates a random number between min up-to and excluding max
+    const generateRandomNumber = (min = 0, maxExcluding = 5, exclusion = 0) => {
+        let randomNumber = Math.floor(Math.random() * (maxExcluding - min)) + min;
         while (randomNumber === exclusion) {
-            randomNumber = Math.floor(Math.random() * (max - min)) + min;
+            randomNumber = Math.floor(Math.random() * (maxExcluding - min)) + min;
         }
         return randomNumber;
     }
@@ -28,8 +29,8 @@ export const Home = () => {
         setRobotMessage("");
         setIsFormInFocus(false);
         setRobotPosition([parseInt(rowPosition-1),parseInt(columnPosition-1)]);
-        const giftRowPosition = generateRandomNumber(0,4,rowPosition-1);
-        const giftColumnPosition = generateRandomNumber(0,4,columnPosition-1);
+        const giftRowPosition = generateRandomNumber(0,5,rowPosition-1);
+        const giftColumnPosition = generateRandomNumber(0,5,columnPosition-1);
         setGiftPosition([giftRowPosition, giftColumnPosition]);
     }
 

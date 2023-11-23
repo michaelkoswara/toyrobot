@@ -1,8 +1,10 @@
+import { memo } from "react";
 import squareStyles from "./Square.module.scss";
 import robotIcon from "../../icons/robot-icon.png";
 import giftIcon from "../../icons/gift-icon.png";
 
-export const Square = ({hasRobot = false, hasGift = false}) => {
+// Memoized component (simple functional component that only receives props)
+export const Square = memo(({hasRobot = false, hasGift = false}) => {
     const containText = `that contains a ${hasRobot ? "robot": hasGift ? "gift" : ""}`;
     const ariaText = `A ${!(hasRobot || hasGift) ? "blank":""} square ${hasRobot || hasGift ? containText : ""}`;
     return (
@@ -11,4 +13,4 @@ export const Square = ({hasRobot = false, hasGift = false}) => {
             {hasGift && <img src={giftIcon} data-testid="gift-icon" alt="an icon of a gift"/>}
         </div>
     );
-};
+});
