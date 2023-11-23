@@ -4,12 +4,12 @@ The goal of this project is to demonstrate a Proof of Concept of a simple user c
 
 It can either be run locally (see instructions below). Or visit the Github-Pages hosted application at https://michaelkoswara.github.io/toyrobot/
 
-## Important note
+## [Important note]
 
 This initial template for this project is "create-react-app".
-Although this is famous and has been around for awhile, there is a design flaw of this development server that leads
+**Although this is famous and has been around for awhile, there is a design flaw of this development server that leads
 to encountering an NPM Audit warning of 8 or so packages during installation.
-This is widely known and for the purpose of Proof of Concept it should be fine. 
+This is widely known and for the purpose of Proof of Concept it should be fine.** 
 More info here: https://overreacted.io/npm-audit-broken-by-design/
 
 For the future, there is a growing alternative called "vite" that I have also used in the past.
