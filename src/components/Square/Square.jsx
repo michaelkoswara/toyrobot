@@ -3,10 +3,12 @@ import robotIcon from "../../icons/robot-icon.png";
 import giftIcon from "../../icons/gift-icon.png";
 
 export const Square = ({hasRobot = false, hasGift = false}) => {
+    const containText = `that contains a ${hasRobot ? "robot": hasGift ? "gift" : ""}`;
+    const ariaText = `A ${!(hasRobot || hasGift) ? "blank":""} square ${hasRobot || hasGift ? containText : ""}`;
     return (
-        <div className={`${squareStyles.square} square`}>
-            {hasRobot && <img src={robotIcon} data-testid="robot-icon"/>}
-            {hasGift && <img src={giftIcon} data-testid="gift-icon"/>}
+        <div className={`${squareStyles.square} square`} aria-label={ariaText}>
+            {hasRobot && <img src={robotIcon} data-testid="robot-icon" alt="an icon of a robot"/>}
+            {hasGift && <img src={giftIcon} data-testid="gift-icon" alt="an icon of a gift"/>}
         </div>
     );
 };

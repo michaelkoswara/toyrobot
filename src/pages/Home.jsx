@@ -134,10 +134,10 @@ export const Home = () => {
             <div className={homeStyles.col}>
                 <h2>Command Panel</h2>
                 <div className={homeStyles.locationStatus}>Robot Location: {`X ${robotPosition[0]+1} : Y ${robotPosition[1]+1}`}</div>
-                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowUp")} data-testid="arrow-up">{"UP"}</button>
-                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowDown")} data-testid="arrow-down">{"DOWN"}</button>
-                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowLeft")} data-testid="arrow-left">{"LEFT"}</button>
-                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowRight")} data-testid="arrow-right">{"RIGHT"}</button>
+                <button aria-label="Move up button" className={homeStyles.moveButton} onClick={() => moveRobot("ArrowUp")} data-testid="arrow-up">{"UP"}</button>
+                <button aria-label="Move down button" className={homeStyles.moveButton} onClick={() => moveRobot("ArrowDown")} data-testid="arrow-down">{"DOWN"}</button>
+                <button aria-label="Move left button" className={homeStyles.moveButton} onClick={() => moveRobot("ArrowLeft")} data-testid="arrow-left">{"LEFT"}</button>
+                <button aria-label="Move right button" className={homeStyles.moveButton} onClick={() => moveRobot("ArrowRight")} data-testid="arrow-right">{"RIGHT"}</button>
                 
                 {robotMessage && <p className={homeStyles.message} data-testid="robot-message">Message from robot: {`"${robotMessage}"`}</p>}
                 <Form onSubmit={handleNewPositionRequest} onFocusChange={setIsFormInFocus}/>

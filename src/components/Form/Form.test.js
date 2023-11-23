@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, act, cleanup, waitFor } from '@testing-library/react';
+import { render, screen, act, cleanup, waitFor } from '@testing-library/react';
 import { Form } from '..';
 import userEvent from '@testing-library/user-event';
 
@@ -15,7 +15,7 @@ describe('<Form/>', () =>{
     await act(() => {
       userEvent.type(xInput,"5");
       userEvent.type(yInput,"5");
-      fireEvent.click(submitButton);
+      userEvent.click(submitButton);
     })
     
     const message = await screen.queryByTestId(/validation-message/i);

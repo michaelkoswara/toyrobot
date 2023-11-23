@@ -18,15 +18,17 @@ export const Form = ({onSubmit, onFocusChange}) => {
             (["min","max"].includes(errors?.rowPosition?.type) || ["min","max"].includes(errors?.columnPosition?.type))  
             && <p className={formStyles.validationMessage} data-testid="value-validation-message">Please enter a numerical value between 1 and 5 for both row and column position.</p>
         }
-        <div className={formStyles.formGroup}>
-            <label className={formStyles.formLabel} htmlFor="rowPosition">X Location:</label>
-            <input type="number" id="rowPosition" data-testid="x-position" name="rowPosition" {...register("rowPosition", { min: 1, max: 5, required: true })} />
+        <div className={formStyles.formGroupContainer}>
+            <div className={formStyles.formGroup}>
+                <label className={formStyles.formLabel} htmlFor="rowPosition" id="rowPositionLabel">X Location:</label>
+                <input className={formStyles.numInput} type="number" aria-labelledby="rowPositionLabel" id="rowPosition" data-testid="x-position" name="rowPosition" {...register("rowPosition", { min: 1, max: 5, required: true })} />
+            </div>
+            <div className={formStyles.formGroup}>
+                <label className={formStyles.formLabel} htmlFor="columnPosition" id="columnPositionLabel">Y Location:</label>
+                <input className={formStyles.numInput} type="number" aria-labelledby="columnPositionLabel" id="columnPosition" data-testid="y-position" name="columnPosition" {...register("columnPosition", { min: 1, max: 5, required: true })} />
+            </div>
         </div>
-        <div className={formStyles.formGroup}>
-            <label className={formStyles.formLabel} htmlFor="columnPosition">Y Location:</label>
-            <input type="number" id="columnPosition" data-testid="y-position" name="columnPosition" {...register("columnPosition", { min: 1, max: 5, required: true })} />
-        </div>
-        <input type="submit" data-testid="form-submit-button"/>
+        <button className={formStyles.submitButton} type="submit" data-testid="form-submit-button">Reset robot position</button>
     </form>
   );
 }
