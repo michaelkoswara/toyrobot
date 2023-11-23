@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Board, Square, Form } from "../components";
 import { useKeyPress } from "../hooks/useKeyPress";
+import homeStyles from "./Home.module.scss";
 
 export const Home = () => {
     const [robotPosition, setRobotPosition] = useState([0,0]);
@@ -25,9 +26,10 @@ export const Home = () => {
         document.activeElement.blur();
         setRobotMessage("");
         setIsFormInFocus(false);
-        setRobotPosition([parseInt(columnPosition-1), parseInt(rowPosition-1)]);
-        const giftRowPosition = generateRandomNumber(0,4,rowPosition);
-        const giftColumnPosition = generateRandomNumber(0,4,columnPosition);
+        setRobotPosition([parseInt(rowPosition-1),parseInt(columnPosition-1)]);
+        const giftRowPosition = generateRandomNumber(0,4,rowPosition-1);
+        const giftColumnPosition = generateRandomNumber(0,4,columnPosition-1);
+        console.log(`gift pos: ${giftRowPosition} ${giftColumnPosition}`);
         setGiftPosition([giftRowPosition, giftColumnPosition]);
     }
 
@@ -53,22 +55,32 @@ export const Home = () => {
         const [robotRowPosition, robotColumnPosition] = robotPosition;
         let newRowPosition = robotRowPosition;
         let newColumnPosition = robotColumnPosition;
+        let isInputValid = true;
+        const invalidInputMessage = "Oops, I cannot fall off the edge.";
         switch(direction) {
             case "ArrowLeft":
                 newRowPosition -= 1;
-                if (newRowPosition >= minBoundary) setRobotPosition([newRowPosition,robotColumnPosition]);
+                isInputValid = newRowPosition >= minBoundary;
+                if (isInputValid) setRobotPosition([newRowPosition,robotColumnPosition])
+                else {setRobotMessage(invalidInputMessage);}
                 break;
             case "ArrowRight":
                 newRowPosition += 1;
-                if (newRowPosition <= maxBoundary) setRobotPosition([newRowPosition,robotColumnPosition]);
+                isInputValid = newRowPosition <= maxBoundary;
+                if (isInputValid) setRobotPosition([newRowPosition,robotColumnPosition])
+                else {setRobotMessage(invalidInputMessage);}
                 break;
             case "ArrowUp":
                 newColumnPosition -= 1;
-                if (newColumnPosition >= minBoundary) setRobotPosition([robotRowPosition,newColumnPosition]);
+                isInputValid = newColumnPosition >= minBoundary;
+                if (isInputValid) setRobotPosition([robotRowPosition,newColumnPosition])
+                else {setRobotMessage(invalidInputMessage);}
                 break;
             case "ArrowDown":
                 newColumnPosition += 1;
-                if (newColumnPosition <= maxBoundary) setRobotPosition([robotRowPosition,newColumnPosition]);
+                isInputValid = newColumnPosition <= maxBoundary;
+                if (isInputValid) setRobotPosition([robotRowPosition,newColumnPosition])
+                else {setRobotMessage(invalidInputMessage);}
                 break;
             default:
                 return;
@@ -80,7 +92,7 @@ export const Home = () => {
         if (arrowKeyPressed && !isFormInFocus) {
           moveRobot(arrowKeyPressed);
         }
-        if (invalidKeyPressed && !isFormInFocus) {
+        if (invalidKeyPressed && !isFormInFocus && (invalidKeyPressed !== 'Tab')) {
             setRobotMessage("Oops, I can only be moved using the directional keys or buttons :)")
         }
     }, [arrowKeyPressed, isFormInFocus, invalidKeyPressed]);
@@ -106,25 +118,31 @@ export const Home = () => {
    
     return (
         <>
-            <h1>Toy Robot Simulator</h1>
-            <Board>
-                {
-                    playingBoard.map((row, rowIndex) => {
-                        return <div key={rowIndex}>
-                            {
-                                row.map((column, columnIndex) => <Square key={`${rowIndex},${columnIndex}`} hasRobot={shouldDisplayRobot([rowIndex, columnIndex])} hasGift={shouldDisplayGift([rowIndex, columnIndex])}/>)
-                            }
-                        </div>
-                    })
-                }
-            </Board>
-            <div>Status: {`Row ${robotPosition[1]+1} Column ${robotPosition[0]+1}}`}</div>
-            {robotMessage && <p>Message from robot: {`"${robotMessage}"`}</p>}
-            <button onClick={() => moveRobot("ArrowLeft")}>{"<"}</button>
-            <button onClick={() => moveRobot("ArrowUp")}>{"^"}</button>
-            <button onClick={() => moveRobot("ArrowRight")}>{">"}</button>
-            <button onClick={() => moveRobot("ArrowDown")}>{"v"}</button>
-            <Form onSubmit={handleNewPositionRequest} onFocusChange={setIsFormInFocus}/>
+            <div className={homeStyles.col}>
+                <h1>Toy Robot Simulator</h1>
+                <Board>
+                    {
+                        playingBoard.map((row, rowIndex) => {
+                            return <div key={rowIndex}>
+                                {
+                                    row.map((column, columnIndex) => <Square key={`${rowIndex},${columnIndex}`} hasRobot={shouldDisplayRobot([rowIndex, columnIndex])} hasGift={shouldDisplayGift([rowIndex, columnIndex])}/>)
+                                }
+                            </div>
+                        })
+                    }
+                </Board>
+            </div>
+            <div className={homeStyles.col}>
+                <h2>Command Panel</h2>
+                <div className={homeStyles.locationStatus}>Robot Location: {`X ${robotPosition[0]+1} : Y ${robotPosition[1]+1}`}</div>
+                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowUp")}>{"UP"}</button>
+                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowDown")}>{"DOWN"}</button>
+                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowLeft")}>{"LEFT"}</button>
+                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowRight")}>{"RIGHT"}</button>
+                
+                {robotMessage && <p className={homeStyles.message}>Message from robot: {`"${robotMessage}"`}</p>}
+                <Form onSubmit={handleNewPositionRequest} onFocusChange={setIsFormInFocus}/>
+            </div>
 
         </>
     );

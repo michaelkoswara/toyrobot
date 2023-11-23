@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import formStyles from "./Form.module.scss";
 
 export const Form = ({onSubmit, onFocusChange}) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -8,19 +9,23 @@ export const Form = ({onSubmit, onFocusChange}) => {
   }
    
   return (
-    <form onSubmit={handleSubmit(onSubmit)} onFocus={() => handleFocusChange(true)} onBlur={() => handleFocusChange(false)}>
+    <form className={formStyles.inputForm} onSubmit={handleSubmit(onSubmit)} onFocus={() => handleFocusChange(true)} onBlur={() => {handleFocusChange(false);}}>
         {
             (errors?.rowPosition?.type === "required" || errors?.columnPosition?.type === "required")  
-            && <p>Please enter both row and column position. Both fields are required.</p>
+            && <p className={formStyles.validationMessage}>Please enter both row and column position. Both fields are required.</p>
         }
         {
             (["min","max"].includes(errors?.rowPosition?.type) || ["min","max"].includes(errors?.columnPosition?.type))  
-            && <p>Please enter a numerical value between 1 and 5 for both row and column position.</p>
+            && <p className={formStyles.validationMessage}>Please enter a numerical value between 1 and 5 for both row and column position.</p>
         }
-        <label htmlFor="rowPosition">Row Number:</label>
-        <input type="number" id="rowPosition" name="rowPosition" {...register("rowPosition", { min: 1, max: 5, required: true })} />
-        <label htmlFor="columnPosition">Column Number:</label>
-        <input type="number" id="columnPosition" name="columnPosition" {...register("columnPosition", { min: 1, max: 5, required: true })} />
+        <div className={formStyles.formGroup}>
+            <label className={formStyles.formLabel} htmlFor="rowPosition">X Location:</label>
+            <input type="number" id="rowPosition" name="rowPosition" {...register("rowPosition", { min: 1, max: 5, required: true })} />
+        </div>
+        <div className={formStyles.formGroup}>
+            <label className={formStyles.formLabel} htmlFor="columnPosition">Y Location:</label>
+            <input type="number" id="columnPosition" name="columnPosition" {...register("columnPosition", { min: 1, max: 5, required: true })} />
+        </div>
         <input type="submit"/>
     </form>
   );

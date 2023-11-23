@@ -1,0 +1,42 @@
+$breakpoint-large: 1000px;
+$breakpoint-medium: 768px;
+$breakpoint-xlarge: 1280px;
+
+.col {
+    @media (max-width: $breakpoint-medium) {
+        width: 100%;
+    }
+    @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
+        width: 50%;
+    }
+    @media (min-width: $breakpoint-large) {
+        width: 40%;
+    }
+    @media (min-width: $breakpoint-xlarge) {
+        width: 30%;
+    }
+}
+
+h1, h2 {
+    margin: 1rem 0rem 1rem 0;
+}
+
+.locationStatus {
+    margin-bottom: 1rem;
+}
+
+.message {
+    font-weight: bold;
+    color: #CD5646FF;
+}
+
+.moveButton {
+    width: 55px;
+    margin-right: 0.5rem;
+    border-radius: 0px;
+    background-color: transparent;
+    border: 1px solid;
+    display: inline-flex;
+    justify-content: center;
+    font-weight: bold;
+}
