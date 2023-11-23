@@ -10,6 +10,7 @@ export const Home = () => {
     const [robotMessage, setRobotMessage] = useState("");
     const minBoundary = 0;
     const maxBoundary = 4;
+    const invalidInputMessage = "Oops, I cannot fall off the edge.";
     const playingBoard = (new Array(5)).fill(new Array(5).fill(0));
     const [arrowKeyPressed, invalidKeyPressed] = useKeyPress(['ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown']);
 
@@ -56,7 +57,6 @@ export const Home = () => {
         let newRowPosition = robotRowPosition;
         let newColumnPosition = robotColumnPosition;
         let isInputValid = true;
-        const invalidInputMessage = "Oops, I cannot fall off the edge.";
         switch(direction) {
             case "ArrowLeft":
                 newRowPosition -= 1;
@@ -119,7 +119,7 @@ export const Home = () => {
     return (
         <>
             <div className={homeStyles.col}>
-                <h1>Toy Robot Simulator</h1>
+                <h1 data-testid="main-header">Toy Robot Simulator</h1>
                 <Board>
                     {
                         playingBoard.map((row, rowIndex) => {
@@ -135,12 +135,12 @@ export const Home = () => {
             <div className={homeStyles.col}>
                 <h2>Command Panel</h2>
                 <div className={homeStyles.locationStatus}>Robot Location: {`X ${robotPosition[0]+1} : Y ${robotPosition[1]+1}`}</div>
-                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowUp")}>{"UP"}</button>
-                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowDown")}>{"DOWN"}</button>
-                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowLeft")}>{"LEFT"}</button>
-                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowRight")}>{"RIGHT"}</button>
+                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowUp")} data-testid="arrow-up">{"UP"}</button>
+                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowDown")} data-testid="arrow-down">{"DOWN"}</button>
+                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowLeft")} data-testid="arrow-left">{"LEFT"}</button>
+                <button className={homeStyles.moveButton} onClick={() => moveRobot("ArrowRight")} data-testid="arrow-right">{"RIGHT"}</button>
                 
-                {robotMessage && <p className={homeStyles.message}>Message from robot: {`"${robotMessage}"`}</p>}
+                {robotMessage && <p className={homeStyles.message} data-testid="robot-message">Message from robot: {`"${robotMessage}"`}</p>}
                 <Form onSubmit={handleNewPositionRequest} onFocusChange={setIsFormInFocus}/>
             </div>
 

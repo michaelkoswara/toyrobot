@@ -4,9 +4,9 @@ import giftIcon from "../../icons/gift-icon.png";
 
 export const Square = ({hasRobot = false, hasGift = false}) => {
     return (
-        <div className={squareStyles.square}>
-            {hasRobot && <img src={robotIcon}/>}
-            {hasGift && <img src={giftIcon}/>}
+        <div className={`${squareStyles.square} square`}>
+            {hasRobot && <img src={robotIcon} data-testid="robot-icon"/>}
+            {hasGift && <img src={giftIcon} data-testid="gift"/>}
         </div>
     );
 };

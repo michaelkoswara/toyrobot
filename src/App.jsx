@@ -4,7 +4,7 @@ import { Home } from './pages';
 function App() {
   return (
     <main>
-      <Home/>
+      <Home data-test-id="home-page-component"/>
     </main>
   );
 }
