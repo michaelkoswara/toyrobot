@@ -20,13 +20,13 @@ export const Form = ({onSubmit, onFocusChange}) => {
         }
         <div className={formStyles.formGroup}>
             <label className={formStyles.formLabel} htmlFor="rowPosition">X Location:</label>
-            <input type="number" id="rowPosition" name="rowPosition" {...register("rowPosition", { min: 1, max: 5, required: true })} />
+            <input type="number" id="rowPosition" data-testid="x-position" name="rowPosition" {...register("rowPosition", { min: 1, max: 5, required: true })} />
         </div>
         <div className={formStyles.formGroup}>
             <label className={formStyles.formLabel} htmlFor="columnPosition">Y Location:</label>
-            <input type="number" id="columnPosition" name="columnPosition" {...register("columnPosition", { min: 1, max: 5, required: true })} />
+            <input type="number" id="columnPosition" data-testid="y-position" name="columnPosition" {...register("columnPosition", { min: 1, max: 5, required: true })} />
         </div>
-        <input type="submit"/>
+        <input type="submit" data-testid="form-submit-button"/>
     </form>
   );
 }

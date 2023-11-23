@@ -30,7 +30,6 @@ export const Home = () => {
         setRobotPosition([parseInt(rowPosition-1),parseInt(columnPosition-1)]);
         const giftRowPosition = generateRandomNumber(0,4,rowPosition-1);
         const giftColumnPosition = generateRandomNumber(0,4,columnPosition-1);
-        console.log(`gift pos: ${giftRowPosition} ${giftColumnPosition}`);
         setGiftPosition([giftRowPosition, giftColumnPosition]);
     }
 
