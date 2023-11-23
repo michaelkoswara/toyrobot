@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within, act, cleanup } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import { Board } from '..';
 
 afterEach(cleanup);

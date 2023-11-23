@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export const useKeyPress = (targetKeys) => {
     const [keyPressed, setKeyPressed] = useState("");
     const [nonTargetKeyPressed, setNonTargetKeyPressed] = useState("");
+    const targetedKeys = [...targetKeys];
   
     useEffect(() => {
       const downHandler = ({ key }) => {
@@ -28,7 +29,7 @@ export const useKeyPress = (targetKeys) => {
         window.removeEventListener('keydown', downHandler);
         window.removeEventListener('keyup', upHandler);
       };
-    }, [...targetKeys]);
+    }, [targetedKeys]);
   
     return [keyPressed, nonTargetKeyPressed];
   };

@@ -49,7 +49,6 @@ describe('<Form/>', () =>{
     const mockOnFocusChange = jest.fn();
     render(<Form onSubmit={mockOnSubmit} onFocusChange={mockOnFocusChange} />);
     const xInput = screen.getByTestId("x-position");
-    const yInput = screen.getByTestId("y-position");
     const submitButton = screen.getByTestId("form-submit-button");
     await act(() => {
       userEvent.type(xInput,"3");
