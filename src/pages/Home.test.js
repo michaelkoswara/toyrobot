@@ -1,5 +1,6 @@
-import { fireEvent, render, screen, within, act, cleanup } from '@testing-library/react';
+import { render, screen, within, act, cleanup } from '@testing-library/react';
 import { Home } from '.';
+import userEvent from '@testing-library/user-event';
 
 afterEach(cleanup);
 
@@ -20,40 +21,44 @@ describe('Home page', () =>{
     const robots = within(boardElement).getAllByTestId("robot-icon");
     expect(robots.length).toEqual(1);
   });
-  test('prevents robot from falling off if it is on the edge and displays a warning message', () => {
+  test('prevents robot from falling off if it is on the edge and displays a warning message', async () => {
     // The initial position of the robot upon first-ever page load is (0,0). We can move it to the left to test the boundary.
     render(<Home />);
     const squareElements = document.querySelectorAll("[data-testid=playing-board] .square");
     const leftButton = screen.getByTestId("arrow-left");
-    fireEvent.click(leftButton);
+    await act(() => {
+      userEvent.click(leftButton);
+    })
     const robot = within(squareElements[0]).getByTestId("robot-icon");
     const message = screen.getByTestId("robot-message");
     expect(message).toBeInTheDocument();
     expect(message).toHaveTextContent(/cannot fall off/i);
     expect(robot).toBeTruthy();
   });
-  test('the robot can move without any warning messages', () => {
+  test('the robot can move without any warning messages', async () => {
     render(<Home />);
     const squareElements = document.querySelectorAll("[data-testid=playing-board] .square");
     const leftButton = screen.getByTestId("arrow-left");
     const downButton = screen.getByTestId("arrow-down");
-    fireEvent.click(leftButton);
-    fireEvent.click(downButton);
+    await act(()=>{
+      userEvent.click(leftButton);
+      userEvent.click(downButton);
+    })
     const robot = within(squareElements[1]).queryByTestId("robot-icon");
     const message = screen.queryByTestId("robot-message");
     expect(message).not.toBeInTheDocument();
     expect(robot).toBeTruthy();
   });
-  test('the user can enter an x and y location to reset robot location', async() => {
+  test('the user can enter an x and y location to reset robot location', async () => {
     render(<Home />);
     const squareElements = document.querySelectorAll("[data-testid=playing-board] .square");
     const xInput = screen.getByTestId("x-position");
     const yInput = screen.getByTestId("y-position");
     const submitButton = screen.getByTestId("form-submit-button");
-    act(() => {
-      fireEvent.change(xInput, {target: {value: '5'}})
-      fireEvent.change(yInput, {target: {value: '5'}})
-      fireEvent.click(submitButton);
+    await act(() => {
+      userEvent.type(xInput, "5");
+      userEvent.type(yInput, "5");
+      userEvent.click(submitButton);
     })
     
     const robot = await (within(squareElements[24])).findByTestId("robot-icon");
