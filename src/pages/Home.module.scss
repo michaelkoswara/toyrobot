@@ -3,51 +3,51 @@ $breakpoint-medium: 768px;
 $breakpoint-xlarge: 1280px;
 
 .col {
-    @media (max-width: $breakpoint-medium) {
-        width: 100%;
-    }
-    @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
-        width: 50%;
-    }
-    @media (min-width: $breakpoint-large) {
-        width: 40%;
-    }
-    @media (min-width: $breakpoint-xlarge) {
-        width: 30%;
-    }
+  @media (max-width: $breakpoint-medium) {
+    width: 100%;
+  }
+  @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
+    width: 50%;
+  }
+  @media (min-width: $breakpoint-large) {
+    width: 40%;
+  }
+  @media (min-width: $breakpoint-xlarge) {
+    width: 30%;
+  }
 }
 
 h1 {
-    margin: 1rem 0;
+  margin: 1rem 0;
 }
 
 h2 {
-    margin: 1.25rem 0;
+  margin: 1.25rem 0;
 }
 
 .locationStatus {
-    margin-bottom: 1rem;
-    color: blue;
-    font-weight: bold;
-    width: 220px;
-    text-align: center;
-    height: 28px;
-    padding-top: 8px;
-    border: 1px solid black;
+  margin-bottom: 1rem;
+  color: blue;
+  font-weight: bold;
+  width: 220px;
+  text-align: center;
+  height: 28px;
+  padding-top: 8px;
+  border: 1px solid black;
 }
 
 .message {
-    font-weight: bold;
-    color: #CD5646FF;
+  font-weight: bold;
+  color: #cd5646ff;
 }
 
 .moveButton {
-    width: 55px;
-    margin-right: 0.5rem;
-    border-radius: 0px;
-    background-color: transparent;
-    border: 1px solid;
-    display: inline-flex;
-    justify-content: center;
-    font-weight: bold;
+  width: 55px;
+  margin-right: 0.5rem;
+  border-radius: 0px;
+  background-color: transparent;
+  border: 1px solid;
+  display: inline-flex;
+  justify-content: center;
+  font-weight: bold;
 }

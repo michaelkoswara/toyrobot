@@ -16,6 +16,9 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "latest",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.33.2",
     "gh-pages": "^6.1.0",
     "husky": "^4.3.8"
   },
@@ -24,15 +27,18 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint './src/**/*.{js,jsx}'",
-    "lint:fix": "eslint './src/**/*.{js,jsx}' --fix",
+    "lint": "./node_modules/.bin/eslint './src/**/*.{js,jsx}'",
+    "lint:fix": "./node_modules/.bin/eslint './src/**/*.{js,jsx}' --fix",
+    "prettier": "npx prettier './src/**/*.{js,jsx,scss,css}' --check",
+    "prettier:fix": "npm run prettier -- --write",
+    "format": "npm run prettier:fix && npm run lint:fix",
     "setup": "npm i && npm start",
     "predeploy": "rm -rf build && npm run build",
     "deploy": "gh-pages -d build"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:fix"
+      "pre-commit": "npm run format"
     }
   },
   "eslintConfig": {

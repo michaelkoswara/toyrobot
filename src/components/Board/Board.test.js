@@ -1,11 +1,15 @@
-import { render, screen, cleanup } from '@testing-library/react';
-import { Board } from '..';
+import { render, screen, cleanup } from "@testing-library/react";
+import { Board } from "..";
 
 afterEach(cleanup);
 
-describe('<Board/>', () =>{
-  test('renders the board and its children', () => {
-    render(<Board><button>Hello World</button></Board>);
+describe("<Board/>", () => {
+  test("renders the board and its children", () => {
+    render(
+      <Board>
+        <button>Hello World</button>
+      </Board>,
+    );
     const boardElement = screen.getByTestId("playing-board");
     const button = document.querySelector("button");
     expect(boardElement).toBeInTheDocument();
@@ -13,4 +17,3 @@ describe('<Board/>', () =>{
     expect(button).toHaveTextContent("Hello World");
   });
 });
-

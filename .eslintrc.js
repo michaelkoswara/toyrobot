@@ -10,11 +10,11 @@ module.exports = {
         sourceType: 'module'
     },
     extends: [
-      'plugin:react/recommended',
       "eslint:recommended",
+      'plugin:react/recommended',
+      "prettier"
     ],
     rules: {
-        "react/prop-types": 0,
         "react/display-name":0,
         "react/react-in-jsx-scope": "off",
         "react/jsx-uses-react": "off",
