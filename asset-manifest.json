@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/toyrobot/static/css/main.6a477693.css",
+    "main.css": "/toyrobot/static/css/main.211722d1.css",
     "main.js": "/toyrobot/static/js/main.d194d6eb.js",
     "index.html": "/toyrobot/index.html",
-    "main.6a477693.css.map": "/toyrobot/static/css/main.6a477693.css.map",
+    "main.211722d1.css.map": "/toyrobot/static/css/main.211722d1.css.map",
     "main.d194d6eb.js.map": "/toyrobot/static/js/main.d194d6eb.js.map"
   },
   "entrypoints": [
-    "static/css/main.6a477693.css",
+    "static/css/main.211722d1.css",
     "static/js/main.d194d6eb.js"
   ]
 }
