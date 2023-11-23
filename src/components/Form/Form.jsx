@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import formStyles from "./Form.module.scss";
+import PropTypes from 'prop-types';
 
-export const Form = ({onSubmit, onFocusChange}) => {
+const Form = ({onSubmit, onFocusChange}) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const handleFocusChange = (isFormInFocus) => {
@@ -31,4 +32,11 @@ export const Form = ({onSubmit, onFocusChange}) => {
         <button className={formStyles.submitButton} type="submit" data-testid="form-submit-button">Reset robot position</button>
     </form>
   );
-}
+};
+
+Form.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    onFocusChange: PropTypes.func.isRequired
+};
+
+export default Form;
