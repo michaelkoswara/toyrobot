@@ -91,7 +91,7 @@ export const Home = () => {
         if (arrowKeyPressed && !isFormInFocus) {
           moveRobot(arrowKeyPressed);
         }
-        if (invalidKeyPressed && !isFormInFocus && (invalidKeyPressed !== 'Tab')) {
+        if (invalidKeyPressed && !isFormInFocus && (!['Tab','Enter'].includes(invalidKeyPressed))) {
             setRobotMessage("Oops, I can only be moved using the directional keys or buttons :)")
         }
     }, [arrowKeyPressed, isFormInFocus, invalidKeyPressed]);

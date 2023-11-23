@@ -12,11 +12,11 @@ export const Form = ({onSubmit, onFocusChange}) => {
     <form className={formStyles.inputForm} onSubmit={handleSubmit(onSubmit)} onFocus={() => handleFocusChange(true)} onBlur={() => {handleFocusChange(false);}}>
         {
             (errors?.rowPosition?.type === "required" || errors?.columnPosition?.type === "required")  
-            && <p className={formStyles.validationMessage}>Please enter both row and column position. Both fields are required.</p>
+            && <p className={formStyles.validationMessage} data-testid="required-validation-message">Please enter both row and column position. Both fields are required.</p>
         }
         {
             (["min","max"].includes(errors?.rowPosition?.type) || ["min","max"].includes(errors?.columnPosition?.type))  
-            && <p className={formStyles.validationMessage}>Please enter a numerical value between 1 and 5 for both row and column position.</p>
+            && <p className={formStyles.validationMessage} data-testid="value-validation-message">Please enter a numerical value between 1 and 5 for both row and column position.</p>
         }
         <div className={formStyles.formGroup}>
             <label className={formStyles.formLabel} htmlFor="rowPosition">X Location:</label>

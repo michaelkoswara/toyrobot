@@ -1,5 +1,4 @@
 import { fireEvent, render, screen, within, act, cleanup } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { Home } from '.';
 
 afterEach(cleanup);
