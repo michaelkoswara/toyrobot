@@ -2,6 +2,11 @@ import { useForm } from "react-hook-form";
 import formStyles from "./Form.module.scss";
 import PropTypes from "prop-types";
 
+const validationSchema = {
+  rowPosition: { min: 1, max: 5, required: true },
+  columnPosition: { min: 1, max: 5, required: true },
+};
+
 const Form = ({ onSubmit, onFocusChange }) => {
   const {
     register,
@@ -57,7 +62,7 @@ const Form = ({ onSubmit, onFocusChange }) => {
             id="rowPosition"
             data-testid="x-position"
             name="rowPosition"
-            {...register("rowPosition", { min: 1, max: 5, required: true })}
+            {...register("rowPosition", validationSchema.rowPosition)}
           />
         </div>
         <div className={formStyles.formGroup}>
@@ -75,7 +80,7 @@ const Form = ({ onSubmit, onFocusChange }) => {
             id="columnPosition"
             data-testid="y-position"
             name="columnPosition"
-            {...register("columnPosition", { min: 1, max: 5, required: true })}
+            {...register("columnPosition", validationSchema.columnPosition)}
           />
         </div>
       </div>
