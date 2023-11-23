@@ -1,6 +1,7 @@
 # Toy Robot Simulator
 
 The goal of this project is to demonstrate a Proof of Concept of a simple user controlled entity/character moving around a bounded 2D space on screen.
+
 <img width="400" alt="Screenshot 2023-11-23 at 20 49 40" src="https://github.com/michaelkoswara/toyrobot/assets/3031000/1b33fcce-8ca7-4e3e-9b47-b196ec625fb6">
 
 ## Important note
