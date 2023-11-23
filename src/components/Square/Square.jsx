@@ -6,7 +6,7 @@ export const Square = ({hasRobot = false, hasGift = false}) => {
     return (
         <div className={`${squareStyles.square} square`}>
             {hasRobot && <img src={robotIcon} data-testid="robot-icon"/>}
-            {hasGift && <img src={giftIcon} data-testid="gift"/>}
+            {hasGift && <img src={giftIcon} data-testid="gift-icon"/>}
         </div>
     );
 };
