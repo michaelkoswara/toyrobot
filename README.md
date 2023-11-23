@@ -2,6 +2,8 @@
 
 The goal of this project is to demonstrate a Proof of Concept of a simple user controlled entity/character moving around a bounded 2D space on screen.
 
+It can either be run locally (see instructions below). Or visit the Github-Pages hosted application at https://michaelkoswara.github.io/toyrobot/
+
 ## Important note
 
 This initial template for this project is "create-react-app".
