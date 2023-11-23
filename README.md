@@ -34,3 +34,9 @@ For the future, there is a growing alternative called "vite" that I have also us
 - There is a basic pre-commit hook that is automatically run when you do `git commit`.
 - The hook runs `npm lint:fix`. It will fix minor code style issue and report on any other errors to fix before commiting.
 
+
+
+## Screenshot
+
+<img width="400" alt="Screenshot of the app Toy Robot" src="https://github.com/michaelkoswara/toyrobot/assets/3031000/1b33fcce-8ca7-4e3e-9b47-b196ec625fb6">
+
