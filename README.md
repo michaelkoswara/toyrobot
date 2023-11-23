@@ -22,6 +22,7 @@ For the future, there is a growing alternative called "vite" that I have also us
 
 ## Starting the app locally
 
+- Make sure the installed node version is at least 18.17.1 ( install nvm and run `nvm install 18.17.1`). Or observe the `.nvmrc` file
 - Clone the repo, or if you have the zip, then unzip it.
 - `cd` into the directory of the app and run `npm run setup`. This will install initial dependencies and start the local server on localhost:3000
 

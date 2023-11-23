@@ -5,6 +5,7 @@ afterEach(cleanup);
 
 describe("<Board/>", () => {
   test("renders the board and its children", () => {
+    //Arrange & Act
     render(
       <Board>
         <button>Hello World</button>
@@ -12,6 +13,8 @@ describe("<Board/>", () => {
     );
     const boardElement = screen.getByTestId("playing-board");
     const button = document.querySelector("button");
+
+    //Assert
     expect(boardElement).toBeInTheDocument();
     expect(button).toBeInTheDocument();
     expect(button).toHaveTextContent("Hello World");

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Board, Square, Form } from "../components";
+import { Board, Square, Form, StatusBar } from "../components";
 import { useKeyPress } from "../hooks/useKeyPress";
 import homeStyles from "./Home.module.scss";
 
@@ -165,9 +165,11 @@ export const Home = () => {
       </div>
       <div className={homeStyles.col}>
         <h2>Command Panel</h2>
-        <div className={homeStyles.locationStatus}>
-          Robot Location:{" "}
-          {`X ${robotPosition[0] + 1} : Y ${robotPosition[1] + 1}`}
+        <div className={homeStyles.locationStatusContainer}>
+          <StatusBar
+            xPosition={robotPosition[0] + 1}
+            yPosition={robotPosition[1] + 1}
+          />
         </div>
         <button
           aria-label="Move up button"
